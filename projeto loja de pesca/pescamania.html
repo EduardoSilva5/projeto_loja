@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Loja Fisher Mania</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: #f4f8fb;
+      color: #333;
+    }
+
+    /* ---------- HEADER / NAV ---------- */
+    header {
+      background-color: #fff;
+      border-bottom: 1px solid #ddd;
+      padding: 10px 30px;
+      position: relative;
+    }
+
+    nav {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+    }
+
+    .logo-container {
+      position: relative;
+      display: inline-block;
+    }
+
+    .logo-container img {
+      width: 100px;
+      border-radius: 50%;
+    }
+
+    .logo-text {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      font-size: 18px;
+      font-weight: bold;
+      color: white;
+      text-shadow: 1px 1px 3px rgba(0,0,0,0.7);
+      pointer-events: none;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 25px;
+      list-style: none;
+    }
+
+    .nav-links li a {
+      text-decoration: none;
+      color: #333;
+      font-weight: 500;
+      transition: color 0.3s;
+    }
+
+    .nav-links li a:hover {
+      color: #2a7ae2;
+    }
+
+    .icons {
+      display: flex;
+      gap: 20px;
+      font-size: 22px;
+      cursor: pointer;
+    }
+
+    .menu-toggle {
+      display: none;
+      font-size: 28px;
+      cursor: pointer;
+    }
+
+    @media (max-width: 768px) {
+      .nav-links {
+        display: none;
+        flex-direction: column;
+        background-color: #fff;
+        width: 100%;
+        position: absolute;
+        top: 70px;
+        left: 0;
+        border-top: 1px solid #ddd;
+      }
+
+      .nav-links.active {
+        display: flex;
+      }
+
+      .menu-toggle {
+        display: block;
+      }
+    }
+
+    /* ---------- BANNER ---------- */
+    .banner {
+      background: url('https://images.unsplash.com/photo-1509057199576-632a47484ece?auto=format&fit=crop&w=1600&q=80') no-repeat center center;
+      background-size: cover;
+      height: 300px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      color: white;
+      position: relative;
+    }
+
+    .banner::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.4);
+    }
+
+    .banner h1 {
+      position: relative;
+      font-size: 40px;
+      z-index: 1;
+    }
+
+    .banner p {
+      position: relative;
+      z-index: 1;
+      font-size: 18px;
+      margin-top: 10px;
+    }
+
+    /* ---------- MAIN CONTENT ---------- */
+    main {
+      padding: 40px 30px;
+    }
+
+    .section-title {
+      text-align: center;
+      margin-bottom: 30px;
+      font-size: 28px;
+      color: #2a7ae2;
+    }
+
+    .products {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 20px;
+    }
+
+    .product-card {
+      background: #fff;
+      border-radius: 10px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+      overflow: hidden;
+      text-align: center;
+      transition: transform 0.3s;
+    }
+
+    .product-card img {
+      width: 100%;
+      height: 150px;
+      object-fit: cover;
+    }
+
+    .product-card h3 {
+      font-size: 18px;
+      margin: 10px 0;
+    }
+
+    .product-card p {
+      font-size: 14px;
+      color: #666;
+      margin-bottom: 10px;
+    }
+
+    .product-card:hover {
+      transform: translateY(-5px);
+    }
+
+    footer {
+      background-color: #333;
+      color: #ccc;
+      text-align: center;
+      padding: 20px;
+      margin-top: 40px;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <nav>
+      <div class="logo-container">
+        <img src="dourado.png" alt="Peixe">
+        <div class="logo-text">Fisher Mania</div>
+      </div>
+      <ul class="nav-links" id="navLinks">
+        <li><a href="#">Início</a></li>
+        <li><a href="#">Produtos</a></li>
+        <li><a href="#">Categorias</a></li>
+        <li><a href="#">Contato</a></li>
+      </ul>
+      <div class="icons">
+        <span>🔍</span>
+        <span>🛒</span>
+      </div>
+      <span class="menu-toggle" id="menuToggle">☰</span>
+    </nav>
+  </header>
+
+  <section class="banner">
+    <div>
+      <h1>Bem-Vindo à Loja de Pesca Fisher Mania</h1>
+      <p>Produtos de qualidade para a sua pescaria</p>
+    </div>
+  </section>
+
+  <main>
+    <h2 class="section-title">Produtos em Destaque</h2>
+    <div class="products">
+      <div class="product-card">
+        <img src="https://images.unsplash.com/photo-1601132355856-9e22c1f15112?auto=format&fit=crop&w=600&q=80" alt="Vara de Pesca">
+        <h3>Vara de Pesca</h3>
+        <p>Alta resistência para grandes desafios.</p>
+      </div>
+      <div class="product-card">
+        <img src="https://images.unsplash.com/photo-1613145992431-28255b70c7ef?auto=format&fit=crop&w=600&q=80" alt="Iscas Artificiais">
+        <h3>Iscas Artificiais</h3>
+        <p>Variedade de cores e modelos para todos os peixes.</p>
+      </div>
+      <div class="product-card">
+        <img src="https://images.unsplash.com/photo-1515442261605-65987753a8ed?auto=format&fit=crop&w=600&q=80" alt="Caixa de Pesca">
+        <h3>Caixa de Pesca</h3>
+        <p>Organização e praticidade em cada pescaria.</p>
+      </div>
+      <div class="product-card">
+        <img src="https://images.unsplash.com/photo-1602351144854-f7426eabdf26?auto=format&fit=crop&w=600&q=80" alt="Molinetes">
+        <h3>Molinetes</h3>
+        <p>Durabilidade e leveza para arremessos precisos.</p>
+      </div>
+    </div>
+  </main>
+
+  <footer>
+    &copy; 2025 MinhaLoja de Pesca - Todos os direitos reservados.
+  </footer>
+
+  <script>
+    const menuToggle = document.getElementById('menuToggle');
+    const navLinks = document.getElementById('navLinks');
+
+    menuToggle.addEventListener('click', () => {
+      navLinks.classList.toggle('active');
+    });
+  </script>
+</body>
+</html>
